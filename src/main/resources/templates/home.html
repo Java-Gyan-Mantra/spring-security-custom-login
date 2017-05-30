@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Home Page</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/table.css}" />
+</head>
+<body>
+	<div align="right" style="background-color: lavender">
+		<form th:action="@{/logout}" method="post">
+			<input type="image" th:src="@{/images/logout.png}" height="40px"
+				width="10px" alt="Submit" />
+		</form>
+	</div>
+	<div align="center">
+		<a href="/getUsers"><img th:src="@{/images/download.png}"
+			height="60px" width="180px" /></a>
+	</div>
+	<h1 th:text="${message}" style="text-align: center; color: navy;">message</h1>
+	<table>
+		<thead>
+			<tr style="text-align: center;">
+				<th>User-Id</th>
+				<th>Name</th>
+				<th>Department</th>
+				<th>Age</th>
+				<th>Delete</th>
+				<th>Update</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="user : ${users}">
+				<td th:text="${user.id}" style="font-weight: bold;"></td>
+				<td th:text="${user.name}">Name</td>
+				<td th:text="${user.dept}">Department</td>
+				<td th:text="${user.age}">Salary</td>
+				<td><a th:href="@{'deleteUser?id=' + ${user.id}}"><img
+						th:src="@{/images/delete.jpg}" height="60px" width="100px" /></a></td>
+				<td><a th:href="@{'updateUser?id=' + ${user.id}}"><img
+						th:src="@{/images/update.jpg}" height="60px" width="100px" /></a></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

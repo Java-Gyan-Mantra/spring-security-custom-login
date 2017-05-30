@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Login</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body onload="document.f.username.focus();">
+	<div class="login-page">
+		<div class="form">
+			<form class="register-form">
+				<input type="text" placeholder="name" /> <input type="password"
+					placeholder="password" /> <input type="text"
+					placeholder="email address" />
+				<button>create</button>
+				<p class="message">
+					Already registered? <a href="#">Sign In</a>
+				</p>
+			</form>
+			<div class="content">
+				<p th:if="${param.logout}" class="alert">You have been logged
+					out</p>
+				<p th:if="${param.error}" class="alert alert-error">There was an
+					error, please try again</p>
+			</div>
+			<form class="login-form" name="form" th:action="@{/login}"
+				action="/login" method="POST">
+				<input type="text" placeholder="username" name="username" /> <input
+					type="password" placeholder="password" name="password" />
+				<button>login</button>
+				<p class="message">
+					Not registered? <a href="#">Create an account</a>
+				</p>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
